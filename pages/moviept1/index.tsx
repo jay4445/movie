@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box } from "./styles";
 
 function Index() {
@@ -26,8 +26,8 @@ function Index() {
       {data &&
         data.movies.map((el: any) => (
           <>
-            <div className="box_white">
-              <div className="thumb_box">
+            <div className="main_box">
+              <div className="in_box">
                 <img src={el.medium_cover_image} />
               </div>
               <div>

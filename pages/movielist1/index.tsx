@@ -28,13 +28,22 @@ function Index() {
         `https://api.themoviedb.org/3/movie/popular?api_key=844dba0bfd8f3a4f3799f6130ef9e335&language=en-US&page=${page}`
       )
       .then((res: { data: { results: IData[] } }) => {
-        setNewMovie({ ...newMovie, ...res.data.results });
-        console.log(res.data.results);
+        if (newMovie) {
+          setNewMovie([]);
+          setNewMovie([...newMovie, ...res.data.results]);
+        } else {
+          setNewMovie(res.data.results);
+          console.log(res.data.results);
+        }
+
+        console.log("newMovie", newMovie);
       });
   };
 
   const getMore = () => {
-    setPage((prev) => prev + 1);
+    setPage(page + 1);
+    get();
+    //@ts-check
   };
 
   useEffect(() => {
